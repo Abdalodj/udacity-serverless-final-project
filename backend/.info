@@ -1,0 +1,32 @@
+Service Information:
+service: serverless-todo-app
+stage: dev
+region: us-east-1
+stack: serverless-todo-app-dev
+resources: 62
+api keys: None
+endpoints:
+  GET - https://68lh31z247.execute-api.us-east-1.amazonaws.com/dev/todos
+  POST - https://68lh31z247.execute-api.us-east-1.amazonaws.com/dev/todos
+  PATCH - https://68lh31z247.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}
+  DELETE - https://68lh31z247.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}
+  POST - https://68lh31z247.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}/attachment
+functions:
+  Auth: serverless-todo-app-dev-Auth
+  GetTodos: serverless-todo-app-dev-GetTodos
+  CreateTodo: serverless-todo-app-dev-CreateTodo
+  UpdateTodo: serverless-todo-app-dev-UpdateTodo
+  DeleteTodo: serverless-todo-app-dev-DeleteTodo
+  GenerateUploadUrl: serverless-todo-app-dev-GenerateUploadUrl
+layers: None
+
+Stack Outputs:
+AuthLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:222787704362:function:serverless-todo-app-dev-Auth:1
+GenerateUploadUrlLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:222787704362:function:serverless-todo-app-dev-GenerateUploadUrl:1
+UpdateTodoLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:222787704362:function:serverless-todo-app-dev-UpdateTodo:1
+GetTodosLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:222787704362:function:serverless-todo-app-dev-GetTodos:1
+DeleteTodoLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:222787704362:function:serverless-todo-app-dev-DeleteTodo:1
+EnterpriseLogAccessIamRole: arn:aws:iam::222787704362:role/serverless-todo-app-dev-EnterpriseLogAccessIamRole-1SOA9GS0B09UU
+CreateTodoLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:222787704362:function:serverless-todo-app-dev-CreateTodo:1
+ServiceEndpoint: https://68lh31z247.execute-api.us-east-1.amazonaws.com/dev
+ServerlessDeploymentBucketName: serverless-todo-app-dev-serverlessdeploymentbucke-to8qqkt3ewkr
