@@ -4,15 +4,15 @@
   "type": "object",
   "properties": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "minLength": 2
     },
     "dueDate": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^d{4}-d{2}-d{2}$"
     }
   },
-  "required": [
-    "name",
-    "dueDate"
-  ],
+  "required": ["name", "dueDate"],
+  "minLength": 12,
   "additionalProperties": false
 }
