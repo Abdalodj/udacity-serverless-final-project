@@ -6,7 +6,6 @@ service: serverless-todo-app
 plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
-  - serverless-plugin-tracing
 
 provider:
   name: aws
@@ -38,27 +37,12 @@ provider:
         - xray:PutTelemetryRecords
         - xray:PutTraceSegments
       Resource: '*'
-    - Effect: Allow
-      Action:
-        - dynamodb:PutItem
-        - dynamodb:DeleteItem
-        - dynamodb:GetItem
-        - dynamodb:Query
-        - dynamodb:UpdateItem
-      Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
-    - Effect: Allow
-      Action:
-        - dynamodb:Query
-      Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}/index/${self:provider.environment.TODOS_CREATED_AT_INDEX}
-    - Effect: Allow
-      Action:
-        - s3:PutObject
-        - s3:GetObject
-      Resource: arn:aws:s3:::${self:provider.environment.ATTACHMENT_S3_BUCKET}/*
 
 functions:
   Auth:
     handler: src/lambda/auth/auth0Authorizer.handler
+    # healthCheckFunction:
+    #   tracing: true # overrides provider settings (opt out)
 
   # TODO: Configure this function -
   # Provide iamRoleStatements property for performing Actions on DynamoDB
